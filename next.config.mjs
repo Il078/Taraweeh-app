@@ -14,17 +14,13 @@ const nextConfig = {
     },
     // Add trailing slash for better static compatibility
     trailingSlash: true,
-    // Configure base path (repository name) for GitHub Pages
-    // If you're deploying to a custom domain, you can comment this out
-    // Otherwise, change this to your repository name
-    basePath: '/taraweeh-app',
+    // Conditionally set basePath for GitHub Pages only
+    // Vercel deployments will not have this environment variable
+    ...(process.env.DEPLOY_TARGET === 'github' ? {
+        basePath: '/taraweeh-app',
+    } : {}),
     // Disable strict mode for Capacitor compatibility
     reactStrictMode: false,
-    // Enable service worker and PWA
-    pwa: {
-        dest: 'public',
-        disable: process.env.NODE_ENV === 'development',
-    },
 };
 
 export default nextConfig; 

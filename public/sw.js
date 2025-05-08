@@ -1,13 +1,13 @@
 // This is the service worker for the Taraweeh App PWA
 
 const CACHE_NAME = 'taraweeh-app-v1';
-const BASE_PATH = '/taraweeh-app'; // GitHub Pages repository name
+// Use relative paths for resources
 const urlsToCache = [
-    `${BASE_PATH}/`,
-    `${BASE_PATH}/manifest.json`,
-    `${BASE_PATH}/icon-192x192.png`,
-    `${BASE_PATH}/icon-512x512.png`,
-    `${BASE_PATH}/favicon.ico`
+    '/',
+    '/manifest.json',
+    '/icon-192x192.png',
+    '/icon-512x512.png',
+    '/favicon.ico'
 ];
 
 self.addEventListener('install', event => {
@@ -21,9 +21,6 @@ self.addEventListener('install', event => {
 });
 
 self.addEventListener('fetch', event => {
-    // Check if the request URL starts with the BASE_PATH
-    const url = new URL(event.request.url);
-
     event.respondWith(
         caches.match(event.request)
             .then(response => {
@@ -36,7 +33,7 @@ self.addEventListener('fetch', event => {
             .catch(() => {
                 // If both cache and network fail, serve offline page
                 if (event.request.mode === 'navigate') {
-                    return caches.match(`${BASE_PATH}/`);
+                    return caches.match('/');
                 }
             })
     );

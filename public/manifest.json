@@ -2,20 +2,20 @@
     "name": "Taraweeh Recitations",
     "short_name": "Taraweeh",
     "description": "Listen to Taraweeh recitations from Makkah and Madinah (1426-1442)",
-    "start_url": "/taraweeh-app/",
+    "start_url": "/",
     "display": "standalone",
     "background_color": "#ffffff",
     "theme_color": "#15803d",
     "orientation": "portrait",
     "icons": [
         {
-            "src": "/taraweeh-app/icon-192x192.png",
+            "src": "/icon-192x192.png",
             "sizes": "192x192",
             "type": "image/png",
             "purpose": "any maskable"
         },
         {
-            "src": "/taraweeh-app/icon-512x512.png",
+            "src": "/icon-512x512.png",
             "sizes": "512x512",
             "type": "image/png",
             "purpose": "any maskable"
