@@ -1,0 +1,79 @@
+/* Green theme for the audio player */
+.green-player {
+    --rhap-theme-color: #15803d;
+    /* green-700 */
+    --rhap-bar-color: #22c55e;
+    /* green-500 */
+    --rhap-background-color: #f0fdf4;
+    /* green-50 */
+    --rhap-button-color: #15803d;
+    /* green-700 */
+    border-radius: 0.375rem;
+    box-shadow: none;
+}
+
+/* Button and slider styles */
+.green-player .rhap_progress-filled {
+    background-color: #15803d;
+}
+
+.green-player .rhap_progress-indicator,
+.green-player .rhap_volume-indicator {
+    background: #15803d;
+}
+
+.green-player .rhap_button-clear {
+    color: #15803d;
+}
+
+.green-player .rhap_main-controls-button {
+    color: #15803d;
+}
+
+.green-player .rhap_progress-bar,
+.green-player .rhap_volume-bar {
+    background-color: #dcfce7;
+    /* green-100 */
+}
+
+.green-player .rhap_time {
+    color: #15803d;
+    font-size: 12px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 640px) {
+    .green-player {
+        font-size: 0.875rem;
+    }
+
+    .green-player .rhap_time {
+        font-size: 11px;
+    }
+
+    .green-player .rhap_controls-section {
+        flex: 1 1 auto;
+    }
+
+    .green-player .rhap_additional-controls {
+        flex: 0 0 auto;
+    }
+
+    .green-player .rhap_volume-controls {
+        justify-content: flex-end;
+    }
+}
+
+/* Make the player more compact */
+.green-player .rhap_progress-section {
+    padding: 0 8px;
+}
+
+.green-player .rhap_controls-section {
+    padding: 0 8px;
+}
+
+.green-player .rhap_volume-controls {
+    justify-content: flex-end;
+    margin-left: 0;
+}
