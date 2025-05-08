@@ -4,6 +4,7 @@ import "./globals.css";
 import Header from "@/components/ui/Header";
 import { AudioProvider } from '@/lib/AudioContext';
 import PersistentPlayer from '@/components/ui/PersistentPlayer';
+import AddToHomePrompt from '@/components/ui/AddToHomePrompt';
 import Script from "next/script";
 
 const geistSans = Geist({
@@ -53,6 +54,7 @@ export default function RootLayout({
             {children}
           </main>
           <PersistentPlayer />
+          <AddToHomePrompt />
           <footer className="bg-green-700 p-4 text-center text-white text-sm">
             <p>Audio courtesy of QuranicAudio.com | {new Date().getFullYear()}</p>
           </footer>

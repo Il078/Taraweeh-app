@@ -23,18 +23,24 @@ export async function generateStaticParams() {
     return params;
 }
 
-// Properly handle params in Next.js - use props argument instead of destructuring to avoid warnings
-export default async function YearPage(props) {
-    // Use a safe, separate step to extract params from props object
-    const section = props.params?.section;
-    const year = props.params?.year;
+// Fix for Next.js bug with dynamic route params
+export default function YearPage({ params }) {
+    // Use synchronous method for params since this is a static page
+    const section = params?.section;
+    const year = params?.year;
 
+    // Wrap the async parts in a Client component or use React.use()
+    return <YearPageContent section={section} year={year} />;
+}
+
+// Separate async component
+async function YearPageContent({ section, year }) {
     if (!section || !year) {
         notFound();
-        return null; // Add early return to avoid execution after notFound
+        return null;
     }
 
-    const yearNum = parseInt(year, 10); // Better than Number() for strings
+    const yearNum = parseInt(year, 10);
 
     // Additional validation
     if (!["makkah", "madinah"].includes(section)) {

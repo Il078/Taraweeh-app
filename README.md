@@ -10,7 +10,6 @@ A web and mobile application for accessing Taraweeh recitations from Makkah and 
 - Custom audio player with play/pause/next/previous controls
 - PWA support for iOS home screen installation
 - Works offline after initial load
-- Capacitor support for building native iOS and Android apps
 
 ## Live Demo
 
@@ -22,7 +21,6 @@ Try the PWA version at [taraweeh-app.github.io](https://taraweeh-app.github.io)
 - React 19
 - TailwindCSS
 - React H5 Audio Player
-- Capacitor for native mobile builds
 - Progressive Web App capabilities
 
 ## Development
@@ -51,32 +49,24 @@ npm run dev
 npm run build
 ```
 
-## Mobile Apps
+## Installing as a PWA on iOS
 
-### PWA Setup
+The app can be installed as a Progressive Web App on iOS, allowing it to function like a native app without requiring App Store submission:
 
-The app can be installed as a PWA on iOS:
+1. Open the app in Safari on your iOS device
+2. Tap the Share button (box with up arrow) at the bottom of the screen
+3. Scroll down and tap "Add to Home Screen"
+4. Name the app "Taraweeh" (or your preferred name)
+5. Tap "Add" in the top right corner
 
-1. Open the app in Safari
-2. Tap the Share button (box with up arrow)
-3. Tap "Add to Home Screen"
-4. Name it and tap "Add"
+The app will now appear on your home screen with its icon, and will launch in fullscreen mode without the Safari browser interface.
 
-### Native App Setup (with Capacitor)
+## Offline Functionality
 
-```bash
-# Build the app
-npm run build
-
-# Sync with Capacitor
-npx cap sync
-
-# Open in Xcode for iOS
-npx cap open ios
-
-# Open in Android Studio
-npx cap open android
-```
+Once installed as a PWA, the app can work offline:
+- The basic app interface will load without an internet connection
+- Previously accessed recitations will be available offline
+- New recitations require internet access to stream or download
 
 ## Data Source
 
