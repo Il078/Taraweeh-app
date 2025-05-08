@@ -3,20 +3,44 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import AudioPlayer from "@/components/ui/AudioPlayer";
 import DownloadButton from "@/components/ui/DownloadButton";
+import TracksProvider from "@/components/TracksProvider";
 
-export const dynamic = "force-dynamic";
+// Remove dynamic flag to allow static export
+// export const dynamic = "force-dynamic";
 
+// Generate static params for all section/year combinations
+export async function generateStaticParams() {
+    const sections = ["makkah", "madinah"];
+    const years = Array.from({ length: 17 }, (_, i) => (1426 + i).toString());
+
+    const params = [];
+    for (const section of sections) {
+        for (const year of years) {
+            params.push({ section, year });
+        }
+    }
+
+    return params;
+}
+
+// Properly handle params in Next.js - use props argument instead of destructuring to avoid warnings
 export default async function YearPage(props) {
-    // Use props.params directly instead of destructuring
-    // This avoids the Next.js warning about using params properties synchronously
-    const section = String(props.params?.section || '');
-    const year = String(props.params?.year || '');
-    const yearNum = Number(year);
+    // Use a safe, separate step to extract params from props object
+    const section = props.params?.section;
+    const year = props.params?.year;
 
-    // Validate params
-    if (!section || !year || !["makkah", "madinah"].includes(section)) {
-        console.error("Invalid section or year:", { section, year });
+    if (!section || !year) {
         notFound();
+        return null; // Add early return to avoid execution after notFound
+    }
+
+    const yearNum = parseInt(year, 10); // Better than Number() for strings
+
+    // Additional validation
+    if (!["makkah", "madinah"].includes(section)) {
+        console.error("Invalid section:", section);
+        notFound();
+        return null;
     }
 
     try {
@@ -27,10 +51,10 @@ export default async function YearPage(props) {
         if (!tracks || tracks.length === 0) {
             console.error("No tracks found for", key);
             notFound();
+            return null;
         }
 
         console.log(`Found ${tracks.length} tracks for ${section}-${yearNum}`);
-        // Add a sample URL to debug
         console.log("Sample track URL:", tracks[0].audio_url);
 
         // Convert Hijri year to Gregorian (approximate)
@@ -43,6 +67,8 @@ export default async function YearPage(props) {
 
         return (
             <div className="bg-white min-h-screen">
+                <TracksProvider tracks={tracks} />
+
                 <div className="container mx-auto px-4 py-6">
                     <div className="bg-green-50 p-6 rounded-lg mb-6 shadow-sm">
                         <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-4">
@@ -84,6 +110,9 @@ export default async function YearPage(props) {
                                     <AudioPlayer
                                         audioUrl={t.audio_url}
                                         title={t.surah_name}
+                                        id={t.id}
+                                        surah_id={t.surah_id}
+                                        surah_name={t.surah_name}
                                     />
                                 </div>
                             </div>

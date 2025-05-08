@@ -227,3 +227,77 @@ body {
     @apply bg-background text-foreground;
   }
 }
+
+/* Custom styles for audio player */
+.rhap_container {
+  background-color: #f0fdf4 !important;
+  box-shadow: none !important;
+  padding: 10px !important;
+  border-radius: 8px !important;
+}
+
+.rhap_progress-bar {
+  background-color: #e2e8f0 !important;
+}
+
+.rhap_progress-filled {
+  background-color: #16a34a !important;
+}
+
+.rhap_progress-indicator {
+  background-color: #16a34a !important;
+}
+
+.rhap_controls-section {
+  margin-top: 5px !important;
+}
+
+.rhap_volume-indicator {
+  background-color: #16a34a !important;
+}
+
+.rhap_button-clear {
+  color: #16a34a !important;
+}
+
+.rhap_time {
+  color: #166534 !important;
+  font-size: 12px !important;
+}
+
+.rhap_volume-bar {
+  background-color: #e2e8f0 !important;
+}
+
+.rhap_volume-indicator {
+  background-color: #16a34a !important;
+}
+
+.persistent-player .rhap_container {
+  background-color: transparent !important;
+  padding: 0 !important;
+}
+
+/* Disable player when waiting */
+button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* Fix layout for persistent player on mobile */
+@media (max-width: 640px) {
+  .persistent-player {
+    width: 100% !important;
+    max-width: none !important;
+  }
+
+  .rhap_additional-controls,
+  .rhap_volume-controls {
+    display: none !important;
+  }
+}
+
+/* Fix layout issues with audio-player z-index */
+.persistent-player {
+  z-index: 50;
+}

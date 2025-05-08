@@ -1,65 +1,88 @@
 # Taraweeh Recitations App
 
-A web application to browse and listen to Taraweeh recitations from the Two Sacred Mosques (Makkah and Madinah) for Hijri years 1426-1442.
+A web and mobile application for accessing Taraweeh recitations from Makkah and Madinah, covering years 1426-1442 Hijri.
 
 ## Features
 
-- Browse recitations by year and location (Makkah or Madinah)
-- Listen to Surah recitations using an embedded audio player
-- Responsive design for mobile and desktop
-- Beautiful green and white UI theme
-- Automatic fallback URL pattern support for QuranicAudio files
+- Browse recitations from both Makkah and Madinah
+- Filter by Hijri year (1426-1442)
+- Beautiful responsive UI for mobile and desktop 
+- Custom audio player with play/pause/next/previous controls
+- PWA support for iOS home screen installation
+- Works offline after initial load
+- Capacitor support for building native iOS and Android apps
+
+## Live Demo
+
+Try the PWA version at [taraweeh-app.github.io](https://taraweeh-app.github.io)
 
 ## Technologies Used
 
-- Next.js 15.3
+- Next.js 15 with TypeScript
 - React 19
-- Tailwind CSS 4
+- TailwindCSS
 - React H5 Audio Player
+- Capacitor for native mobile builds
+- Progressive Web App capabilities
 
-## Getting Started
+## Development
 
 ### Prerequisites
 
-- Node.js (v18+)
-- npm or yarn
+- Node.js 18+ and npm
 
 ### Installation
 
-1. Clone the repository
 ```bash
-git clone https://github.com/Il078/Taraweeh-app.git
+git clone https://github.com/your-username/taraweeh-app.git
 cd taraweeh-app
-```
-
-2. Install dependencies
-```bash
 npm install
-# or
-yarn install
 ```
 
-3. Run the development server
+### Running Locally
+
 ```bash
 npm run dev
-# or
-yarn dev
 ```
 
-4. Open [http://localhost:3000](http://localhost:3000) in your browser
-
-## Deployment
-
-This app can be deployed on Vercel, Netlify, or any other platform that supports Next.js.
+### Building
 
 ```bash
 npm run build
-npm run start
+```
+
+## Mobile Apps
+
+### PWA Setup
+
+The app can be installed as a PWA on iOS:
+
+1. Open the app in Safari
+2. Tap the Share button (box with up arrow)
+3. Tap "Add to Home Screen"
+4. Name it and tap "Add"
+
+### Native App Setup (with Capacitor)
+
+```bash
+# Build the app
+npm run build
+
+# Sync with Capacitor
+npx cap sync
+
+# Open in Xcode for iOS
+npx cap open ios
+
+# Open in Android Studio
+npx cap open android
 ```
 
 ## Data Source
 
-All audio files are sourced from [QuranicAudio.com](https://quranicaudio.com/).
+The app uses QuranicAudio.com API to fetch recitations from:
+- Makkah Al-Mukarramah Taraweeh (1426-1442 Hijri)
+- Madinah Al-Munawwarah Taraweeh (1426-1442 Hijri)
 
 ## License
 
