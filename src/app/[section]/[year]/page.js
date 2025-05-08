@@ -6,10 +6,11 @@ import DownloadButton from "@/components/ui/DownloadButton";
 
 export const dynamic = "force-dynamic";
 
-export default async function YearPage({ params }) {
-    // Get the params in a proper async-safe way
-    const section = String(params?.section || '');
-    const year = String(params?.year || '');
+export default async function YearPage(props) {
+    // Use props.params directly instead of destructuring
+    // This avoids the Next.js warning about using params properties synchronously
+    const section = String(props.params?.section || '');
+    const year = String(props.params?.year || '');
     const yearNum = Number(year);
 
     // Validate params

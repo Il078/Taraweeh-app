@@ -28,7 +28,7 @@ A web application to browse and listen to Taraweeh recitations from the Two Sacr
 
 1. Clone the repository
 ```bash
-git clone https://github.com/yourusername/taraweeh-app.git
+git clone https://github.com/Il078/Taraweeh-app.git
 cd taraweeh-app
 ```
 
